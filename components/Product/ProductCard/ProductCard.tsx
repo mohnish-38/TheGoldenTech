@@ -1,7 +1,8 @@
-import { Image, Card, Text, Group, Button, rem } from '@mantine/core';
+import { Image, Card, Text, Group, Button, rem, Badge } from '@mantine/core';
 import { Carousel } from '@mantine/carousel';
 import { IconStar } from '@tabler/icons-react';
 import classes from './Product.module.css';
+import Link from 'next/link';
 
 const images = [
   'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=720&q=80',
@@ -19,7 +20,7 @@ export function ProductCard() {
   ));
 
   return (
-    <Card radius="md" withBorder padding="xl">
+    <Card withBorder radius="md" p="md" className={classes.card}>
       <Card.Section>
         <Carousel
           withIndicators
@@ -34,36 +35,28 @@ export function ProductCard() {
         </Carousel>
       </Card.Section>
 
-      <Group justify="space-between" mt="lg">
-        <Text fw={500} fz="lg">
+      <Card.Section className={classes.section} mt="md">
+        <Group justify="apart">
+          <Text fz="lg" fw={500}>
           Forde, Norway
-        </Text>
-
-        <Group gap={5}>
-          <IconStar style={{ width: rem(16), height: rem(16) }} />
-          <Text fz="xs" fw={500}>
-            4.78
           </Text>
+          <Badge size="sm" variant="light">
+            Sweeper
+          </Badge>
         </Group>
-      </Group>
-
-      <Text fz="sm" c="dimmed" mt="sm">
+        <Text fz="sm" mt="xs">
         Relax, rejuvenate and unplug in this unique contemporary Birdbox. Feel close to nature in
         ultimate comfort. Enjoy the view of the epic mountain range of Blegja and the Førdefjord.
-      </Text>
+        </Text>
+      </Card.Section>
 
-      <Group justify="space-between" mt="md">
-        <div>
-          <Text fz="xl" span fw={500} className={classes.price}>
-            397$
-          </Text>
-          <Text span fz="sm" c="dimmed">
-            {' '}
-            / night
-          </Text>
-        </div>
-
-        <Button radius="md">Buy now</Button>
+      <Group mt="xs">
+        
+        <Link href={`/Products/Forde`} style={{ flex: 1 }} >
+        <Button radius="md">
+          Show details
+        </Button>
+      </Link>
       </Group>
     </Card>
   );
