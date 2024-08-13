@@ -2,7 +2,13 @@
 import { Modal, Button } from '@mantine/core';
 import { ModalContent } from '../ModalContent/ModalContent';
 
- export default function GetQuotationModal({opened,close,title}) {
+interface GetQuotationModalProps {
+    opened: boolean;
+    close: () => void;
+    title: string;
+  }
+
+ export default function GetQuotationModal({opened,close,title}:GetQuotationModalProps ) {
 
 
   return (
